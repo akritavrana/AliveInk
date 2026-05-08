@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Book | Alive Ink Tattoo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@300;400;600&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --text: #ffffff;
+            --accent: #ff3c00; 
+            --ink-deep: #1a0505;
+            --secondary-text: #a0a0a0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* --- BACKGROUND KINETIC ENGINE --- */
+        .ink-smoke { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -3; background: radial-gradient(circle at center, var(--ink-deep), var(--bg)); }
+        .ink-drop { position: absolute; width: 70vw; height: 70vw; border-radius: 50%; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); opacity: 0.12; filter: blur(150px); animation: fluidMotion 25s infinite alternate ease-in-out; }
+        @keyframes fluidMotion { 0% { transform: translate(-20%, -20%) scale(1); rotate: 0deg; } 100% { transform: translate(20%, 20%) scale(1.3); rotate: 90deg; } }
+
+        /* Navigation */
+        nav { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .logo { font-family: 'Syncopate'; font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; color: white; }
+        .logo span { color: var(--accent); }
+
+        /* Flash Grid */
+        .flash-header { text-align: center; padding: 40px 20px; }
+        .flash-header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 8vw, 4rem); margin: 0; }
+        
+        .flash-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 0 5%;
+            margin-bottom: 60px;
+        }
+
+        .flash-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.4s;
+        }
+
+        .flash-img {
+            width: 100%;
+            aspect-ratio: 1;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%);
+        }
+
+        .flash-item:hover .flash-img { filter: grayscale(0%); }
+
+        .flash-info { padding: 20px; text-align: center; }
+        .flash-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin: 0 0 10px 0; }
+        
+        .btn-claim {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        footer { padding: 40px; text-align: center; border-top: 1px solid #222; font-size: 0.7rem; color: #777; }
+    </style>
+</head>
+<body>
+    <div class="ink-smoke"><div class="ink-drop"></div></div>
+    <nav>
+        <a href="aliveinktatto.html" class="logo">ALIVE<span>INK</span></a>
+        <a href="aliveinktatto.html" style="color: white; text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;">← Back</a>
+    </nav>
+    <header class="flash-header">
+        <h1>Available Designs</h1>
+        <p style="color: var(--secondary-text); letter-spacing: 2px; font-size: 0.7rem;">READY TO INK • ONE-TIME USE ONLY</p>
+    </header>
+    <div class="flash-grid">
+        <div class="flash-item">
+            <div class="flash-img" style="background-image: url('https://images.unsplash.com/photo-1590201772372-897d0f1371ba?w=500');"></div>
+            <div class="flash-info">
+                <h3>Geometric Mandalas</h3>
+                <a href="https://wa.me/919949263313?text=I'm interested in the Geometric Mandala flash design" class="btn-claim">Inquire to Claim</a>
+            </div>
+        </div>
+        <div class="flash-item">
+            <div class="flash-img" style="background-image: url('https://images.unsplash.com/photo-1560707303-4e980ce876ad?w=500');"></div>
+            <div class="flash-info">
+                <h3>Cyberpunk Script</h3>
+                <a href="https://wa.me/919949263313?text=I'm interested in the Cyberpunk Script flash design" class="btn-claim">Inquire to Claim</a>
+            </div>
+        </div>
+        <div class="flash-item">
+            <div class="flash-img" style="background-image: url('https://images.unsplash.com/photo-1550537687-c91072c4792d?w=500');"></div>
+            <div class="flash-info">
+                <h3>Minimalist Nature</h3>
+                <a href="https://wa.me/919949263313?text=I'm interested in the Minimalist Nature flash design" class="btn-claim">Inquire to Claim</a>
+            </div>
+        </div>
+    </div>
+    <footer>ALIVE INK TATTOO | AMEERPET, HYDERABAD</footer>
+</body>
+</html>

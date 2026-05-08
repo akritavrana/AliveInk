@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alive Ink Tattoo | The Art Sanctuary Hyderabad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@300;400;600&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --text: #ffffff;
+            --accent: #ff3c00; 
+            --ink-deep: #1a0505;
+            --secondary-text: #a0a0a0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            overflow-x: hidden;
+            position: relative;
+            scroll-behavior: smooth;
+        }
+
+        /* --- BACKGROUND KINETIC ENGINE --- */
+        .ink-smoke { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -3; background: radial-gradient(circle at center, var(--ink-deep), var(--bg)); }
+        .ink-drop { position: absolute; width: 70vw; height: 70vw; border-radius: 50%; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); opacity: 0.1; filter: blur(150px); animation: fluidMotion 25s infinite alternate ease-in-out; }
+        @keyframes fluidMotion { 0% { transform: translate(-20%, -20%) scale(1); rotate: 0deg; } 100% { transform: translate(20%, 20%) scale(1.3); rotate: 90deg; } }
+        .embers { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        .ember { position: absolute; width: 2px; height: 2px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 8px var(--accent); animation: rise 8s infinite linear; }
+        @keyframes rise { 0% { transform: translateY(110vh) translateX(0); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(-10vh) translateX(100px); opacity: 0; } }
+
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 30px 5%; position: absolute; width: 90%; z-index: 100; }
+        .logo { font-weight: 700; letter-spacing: 4px; text-transform: uppercase; font-size: 1.2rem; font-family: 'Syncopate'; text-shadow: 0 0 20px rgba(255, 60, 0, 0.7); }
+        .logo span { color: var(--accent); }
+
+        /* Hero Section */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
+        .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 15px; max-width: 900px; }
+        .hero-subtext { color: var(--secondary-text); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; }
+
+        /* Service Sections */
+        .service-section {
+            padding: 80px 5%;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            min-height: 60vh;
+        }
+
+        .service-section:nth-child(even) { flex-direction: row-reverse; }
+
+        .service-image {
+            flex: 1;
+            height: 500px;
+            border-radius: 20px;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            filter: grayscale(30%);
+            transition: 0.5s;
+        }
+
+        .service-section:hover .service-image { filter: grayscale(0%); border-color: var(--accent); }
+
+        .service-content { flex: 1; }
+        .service-content .tag { font-family: 'Syncopate'; font-size: 0.6rem; color: var(--accent); letter-spacing: 3px; display: block; margin-bottom: 15px; }
+        .service-content h2 { 
+            font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 3px; margin: 0 0 20px 0; text-shadow: 0 0 15px rgba(255, 60, 0, 0.4);
+        }
+        .service-content p { font-size: 1rem; color: var(--secondary-text); line-height: 1.6; margin-bottom: 30px; }
+
+        /* Buttons */
+        .btn-group { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        .btn-pill { padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.7rem; text-transform: uppercase; transition: 0.3s; }
+        .btn-primary { background: white; color: black; }
+        .btn-secondary { border: 1px solid #333; color: white; backdrop-filter: blur(10px); }
+
+        footer { padding: 60px 5%; text-align: center; border-top: 1px solid #222; }
+
+        /* MOBILE FIXES */
+        @media (max-width: 850px) {
+            nav { padding: 20px 5%; width: 90%; flex-direction: column; gap: 20px; }
+            .logo { font-size: 1rem; letter-spacing: 2px; }
+            .service-section, .service-section:nth-child(even) { flex-direction: column; text-align: center; padding: 60px 5%; }
+            .service-image { width: 100%; height: 350px; flex: none; }
+            .service-content h2 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ink-smoke"><div class="ink-drop"></div><div class="ink-drop" style="animation-delay: -10s; right: 0;"></div></div>
+    <div class="embers" id="ember-container"></div>
+    <nav>
+        <div class="logo">ALIVE<span>INK</span></div>
+        <a href="https://wa.me/919949263313" class="btn-pill" style="border: 1px solid white; color: white; font-size: 0.7rem;">Book Now</a>
+    </nav>
+    <header class="hero">
+        <h1 class="hero-title">The Sanctuary of<br>Permanent & Visual Art.</h1>
+        <p class="hero-subtext">Ameerpet, Hyderabad • Established 2010</p>
+        <div class="btn-group">
+            <a href="#tattoos" class="btn btn-pill btn-primary">Explore Mastery</a>
+            <a href="flash.html" class="btn btn-pill btn-secondary">Flash Book</a>
+        </div>
+    </header>
+    <section class="service-section" id="tattoos">
+        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?w=800');"></div>
+        <div class="service-content">
+            <span class="tag">PRECISION INK</span>
+            <h2>CUSTOM TATTOOS</h2>
+            <p>From hyper-realism to intricate geometric flow, we specialize in technical mastery that breathes with your body. Every session is executed within a sterile, clinical environment using only premium, imported tools.</p>
+            <a href="https://wa.me/919949263313" class="btn-pill btn-secondary">Contact Us</a>
+        </div>
+    </section>
+    <section class="service-section" id="removal">
+        <div class="service-image" style="background-image: url('IMAGE/TR.png');"></div>
+        <div class="service-content">
+            <span class="tag">RESTORATION</span>
+            <h2>TATTOO REMOVAL</h2>
+            <p>A second chance for your skin. We utilize advanced laser technology to safely fade or completely remove unwanted ink with minimal skin trauma. Our process is handled with surgical-grade care.</p>
+            <a href="https://wa.me/919949263313" class="btn-pill btn-secondary">Contact Us</a>
+        </div>
+    </section>
+    <section class="service-section" id="bloodart">
+        <div class="service-image" style="background-image: url('IMAGE/BA.png');"></div>
+        <div class="service-content">
+            <span class="tag">THE BIOMETRIC</span>
+            <h2>BLOOD ART</h2>
+            <p>A truly niche, primal form of expression. We transform biological essence into a permanent, sterile artistic legacy. A unique service for those seeking a profound, physical connection to their art.</p>
+            <a href="https://wa.me/919949263313" class="btn-pill btn-secondary">Contact Us</a>
+        </div>
+    </section>
+    <section class="service-section" id="pencilart">
+        <div class="service-image" style="background-image: url('IMAGE/PA.jpg');"></div>
+        <div class="service-content">
+            <span class="tag">THE ORIGIN</span>
+            <h2>PENCIL ART</h2>
+            <p>Every great tattoo begins with a sketch. Our studio offers hyper-realistic pencil portraits and custom illustrations for private collections, showcasing the raw artistic skill that drives our needles.</p>
+            <a href="https://wa.me/919949263313" class="btn-pill btn-secondary">Contact Us</a>
+        </div>
+    </section>
+    <section class="service-section" id="piercing">
+        <div class="service-image" style="background-image: url('IMAGE/BP.png');"></div>
+        <div class="service-content">
+            <span class="tag">ANATOMY DESIGN</span>
+            <h2>BODY PIERCING</h2>
+            <p>Expert placement designed to complement your unique anatomy. We use only high-grade surgical titanium and gold jewelry to ensure rapid healing and a sophisticated look.</p>
+            <a href="https://wa.me/919949263313" class="btn-pill btn-secondary">Contact Us</a>
+        </div>
+    </section>
+    <footer>
+        <h2 style="font-family: 'Syncopate'; font-size: 0.8rem; color: var(--accent); margin-bottom: 10px;">ALIVE INK TATTOO STUDIO</h2>
+        <p style="color: var(--secondary-text); font-size: 0.7rem;">Beside Ameerpet Metro | Hyderabad • EST. 2010</p>
+    </footer>
+    <script>
+        const container = document.getElementById('ember-container');
+        for (let i = 0; i < 30; i++) {
+            const ember = document.createElement('div');
+            ember.className = 'ember';
+            ember.style.left = Math.random() * 100 + 'vw';
+            ember.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            ember.style.animationDelay = (Math.random() * 10) + 's';
+            container.appendChild(ember);
+        }
+    </script>
+</body>
+</html>
